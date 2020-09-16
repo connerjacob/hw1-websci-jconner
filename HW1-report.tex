@@ -66,7 +66,7 @@ September 20, 2020\\                      % EDIT THIS
 % The * after \section just says to not number the sections
 \section*{Q1}
 Consider the "bow-tie" structure of the web in the Broder et al. paper (http://snap.stanford.edu/class/cs224w-readings/broder00bowtie.pdf) that was described in Week 1.
-Now consider the following links (\ref{lst:listNodes}) Draw the resulting graph (either sketch on paper or use another tool) and include an image in your report.)
+Now consider the following links (\ref{llst:listNodes}) Draw the resulting graph (either sketch on paper or use another tool) and include an image in your report.)
 
 \begin{lstlisting}[numbers=none, caption=Links, label=lst:listNodes]
 A --> B
@@ -164,6 +164,7 @@ b) Then make the same request again, but without showing the HTTP response heade
 c) Finally, load the URI directly from your browser and take a screenshot.
 
 Explain the results you get for each of these steps.
+\pagebreak
 \subsection*{Answer}
 \subsubsection*{a)}
 \begin{lstlisting}[numbers=none, caption=Command, label=lst:q2ACommand]
@@ -209,7 +210,7 @@ and response for all redirects. The -A or --user-agent flag specifies the User-A
 Then the last part of the curl command is the URI(s) for the webserver(s) that we are making a HTTP GET request to \cite{curlManPage}.
 
 \subsubsection*{b)}
-\begin{lstlisting}[numbers=none, caption="curl command to get headers only for all redirects and sets the User-Agent header property", label=lst:q2BCommand]
+\begin{lstlisting}[numbers=none, caption=curl command to get headers only for all redirects and sets the User-Agent header property, label=lst:q2BCommand]
 curl -o response.html -L -A "CS432/532" http://www.cs.odu.edu/\~mweigle/courses/cs532/ua\_echo.php
 \end{lstlisting}
 
@@ -245,6 +246,7 @@ User-Agent string is submitted.
 
 \subsection*{Discussion}
 In this section, different methods of create HTTP GET Requests was examined. In the first two questions, the GET Request was created using the curl command and the headers had to be specified in the command line. In this case only one property was sent in the header and that was "User-Agent".  Then in the last question, a browser was used to issue a GET request for https://www.cs.odu.edu/~mweigle/courses/cs532/ua\_echo.php and the browser automatically created a User-Agent string for the header. One interesting observation from this exercise is that a webserver can very easily identify if a GET request is coming from a browser or another application because a browser sends a header with a unique "User-Agent" string by default and other methods may not. 
+\pagebreak
 \section*{Q3}
 Write a Python program to find links to PDFs in a webpage.
 
@@ -269,12 +271,12 @@ URI: http://www.cs.odu.edu/~mln/pubs/tpdl-2015/tpdl-2015-annotations.pdf
 Final URI: https://www.cs.odu.edu/~mln/pubs/tpdl-2015/tpdl-2015-annotations.pdf
 Content Length: 622,981 bytes
 \end{lstlisting}
-
+\pagebreak
 \subsection*{Answer}
 Listing \ref{lst:findPDFs} is the imported code I used to scrape pdf files from webpages.
 \subsubsection*{Program Code}
 \lstinputlisting[language=Python, caption=findPDFs.py, label=lst:findPDFs]{Q3/findPDFs.py}
-
+\pagebreak
 Below I have provided screenshots of various sample output from the findPDFs.py scraper. 
 \subsection*{Test 0: Dr. Weigle's PDFs} 
 
@@ -288,25 +290,25 @@ Below I have provided screenshots of various sample output from the findPDFs.py 
 gle/courses/cs532/pdfs.html}
     \label{fig:q3ResponseWeigle}
 \end{figure}
-
+\pagebreak
 \subsection*{Test 1: Ubuntu Documentation} 
 \ref{fig:q3ResponseUbuntu} is the output I received after running the findPDFs.py scraper on the Ubuntu manual page (https://help.ubuntu.com/)
 \begin{figure}[H]
     \centering
     % trim and clip are used to crop the image, trim=left bottom right top
     % width sets max width, height will be scaled appropriately
-    \includegraphics[trim=0 20 400 20, clip, width=\textwidth] {Q3/q3_ubuntuHelp.png}
+    \includegraphics[trim=0 400 400 20, clip, width=\textwidth] {Q3/q3_ubuntuHelp.png}
     \caption{findPDFs.py results for https://help.ubuntu.com/}
     \label{fig:q3ResponseUbuntu}
 \end{figure}
-
+\pagebreak
 \subsection*{Test 2: CRAN-R R Documentation} 
-\ref{fig:q3ResponsecranR_1} and \ref{fig:q3ResponsecranR_2} are screenshots of the output I received after running the findPDFs.py scraper on the CRAN-R R programming manuals page (https://cran.r-project.org/manuals.html)
+\ref{fig:q3ResponsecranR_1}, \ref{fig:q3ResponsecranR_2} and \ref{fig:q3ResponsecranR_3} are screenshots of the output I received after running the findPDFs.py scraper on the CRAN-R R programming manuals page (https://cran.r-project.org/manuals.html)
 \begin{figure}[H]
     \centering
     % trim and clip are used to crop the image, trim=left bottom right top
     % width sets max width, height will be scaled appropriately
-    \includegraphics[trim=0 0 400 20, clip, width=\textwidth] {Q3/q3_cranRManuals.png}
+    \includegraphics[trim=0 50 400 10, clip, width=\textwidth] {Q3/q3_cranRManuals.png}
     \caption{findPDFs.py results for https://cran.r-project.org/manuals.html}
     \label{fig:q3ResponsecranR_1}
 \end{figure}
@@ -315,26 +317,44 @@ gle/courses/cs532/pdfs.html}
     \centering
     % trim and clip are used to crop the image, trim=left bottom right top
     % width sets max width, height will be scaled appropriately
-    \includegraphics[trim=0 30 400 10, clip, width=\textwidth] {Q3/q3_cranRManuals2.png}
-    \caption{findPDFs.py results for https://cran.r-project.org/manuals.html}
+    \includegraphics[trim=0 0 400 140, clip, width=\textwidth] {Q3/q3_cranRManuals2.png}
+    \caption{findPDFs.py results for https://cran.r-project.org/manuals.html continued}
     \label{fig:q3ResponsecranR_2}
 \end{figure}
 
-\subsection*{Test 3: Society for East Asian Archaeology} 
-\ref{fig:q3ResponseSEAA_1} is a screenshot of the output I received after running the findPDFs.py scraper on the Society of East Asian Archaeology's 2016 bulletin page (https://seaa-web.org/publications/bseaa/bulletin-society-east-asian-archaeology)
 \begin{figure}[H]
     \centering
     % trim and clip are used to crop the image, trim=left bottom right top
     % width sets max width, height will be scaled appropriately
-    \includegraphics[trim=0 20 400 20, clip, width=\textwidth] {Q3/q3-seaaBulletin2016.png}
+    \includegraphics[trim=0 270 400 10, clip, width=\textwidth] {Q3/q3_cranRManuals3.png}
+    \caption{findPDFs.py results for https://cran.r-project.org/manuals.html continued}
+    \label{fig:q3ResponsecranR_3}
+\end{figure}
+
+\subsection*{Test 3: Society for East Asian Archaeology} 
+\ref{fig:q3ResponseSEAA_1} and \ref{fig:q3ResponseSEAA_2} are screenshots of the output I received after running the findPDFs.py scraper on the Society of East Asian Archaeology's 2016 bulletin page (https://seaa-web.org/publications/bseaa/bulletin-society-east-asian-archaeology)
+\begin{figure}[H]
+    \centering
+    % trim and clip are used to crop the image, trim=left bottom right top
+    % width sets max width, height will be scaled appropriately
+    \includegraphics[trim=0 40 400 0, clip, width=\textwidth] {Q3/q3-seaaBulletin2016.png}
     \caption{findPDFs.py results for https://seaa-web.org/publications/bseaa/bulletin-society-east-asian-archaeology}
     \label{fig:q3ResponseSEAA_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    % trim and clip are used to crop the image, trim=left bottom right top
+    % width sets max width, height will be scaled appropriately
+    \includegraphics[trim=0 300 400 70, clip, width=\textwidth] {Q3/q3-seaaBulletin2016_2.png}
+    \caption{findPDFs.py results for https://seaa-web.org/publications/bseaa/bulletin-society-east-asian-archaeology continued}
+    \label{fig:q3ResponseSEAA_2}
 \end{figure}
 
 
 \subsection*{Discussion}
 
-The Python code above generates a console program that accepts a url as a command-line argument from the user. If no url is provided, the program exits. A HTTP GET request is made to the URL along with a header with the "User-Agent" property to allow the code to run on more webservers that may reject GET requests that omit this property. Once a response is received from the webserver is received, the resulting text from the response is parsed using the BeautifulSoup library to retrieve all of the anchor ('a') tags in the document. Then every anchor's 'href' attribute is tested to see if it is an absolute path. If the url is a relative path, i tis converted to an absolute path. After the link is in the correct form, it is checked to see if it is a pdf and another GET Request is made for each URL. The resulting response from the GET request is used to print the URI, Final URI and file size output to the console. 
+The Python code above generates a console program that accepts a url as a command-line argument from the user. If no url is provided, the program exits. A HTTP GET request is made to the URL along with a header with the "User-Agent" property to allow the code to run on more webservers that may reject GET requests that omit this property. Once a response is received from the webserver is received, the resulting text from the response is parsed using the BeautifulSoup library to retrieve all of the anchor ('a') tags in the document. Then every anchor's 'href' attribute is tested to see if it is an absolute path. If the url is a relative path, i tis converted to an absolute path. After the link is in the correct form, it is checked to see if it is a PDF and another GET Request is made for each URL. The resulting response from the GET request is used to print the URI, Final URI and file size output to the console. 
 
 In order to accomplish task, I have created a main function with 6 other functions. The main function begins with retrieving the url  from the user input. The user input is handled using the checkForArguments function and it makes use of the sys library's argv function to get the first command from the user. A conditional is used to check if the the argv variable exists and if not, it exits the program. This function only checks to make sure the url argument is provided and does not evaluate if it is a valid url or not.
 
@@ -344,9 +364,9 @@ After retrieving the response, the main function uses the BeautifulSoup library 
 
 Now that I have a list of links, I need to format them so they are ready for the response requests. First, I verify that the url is an absolute path, because many websites like to use relative paths to make the code easier to port between testing and production environments. I have modified an absolutePath function \cite{stackOverflowRelativePath} to check if a url starts with "http://www" or "https://www" and if not, the function assumes the link found was a relative url. The urljoin method is used from the UrlLib library to convert the relative url to an absolute url.
 
-Next, next the checkIfPDFRegEx function is used to check if the link is a pdf. This function uses regular expressions with the re libary to check if a url ends in '.pdf' and if it ends in .pdf, the function assumes the link is a pdf. This will find all pdfs as long as the file has the extension. An alternative approach to checking for PDFs is to make a GET or HEAD request using the requests library to read the "Content-Type" property from the header.  If the property exists, you can check if it is is "application/pdf" and if so, the response must be a pdf. Unfortunately, the "Content-Type" property does not always exist in every header and it requires a lot of extra GET or HEAD requests that could lead to a webserver blocking all requests from the webscraper. Since thiis approaach does not always work, I abandoned the Header approach for PDF identification for the regular expression approach. After verifying the url is a pdf link, the checkIfPDFRegEx function calls the validateRequest function to generate a new GET request and returns the response. If a link is not a PDF, then the function returns None. 
+Next, next the checkIfPDFRegEx function is used to check if the link is a PDF. This function uses regular expressions with the re libary to check if a url ends in '.pdf' and if so, the function assumes the link is a PDF. This will find all PDFs as long as the file has the extension. An alternative approach to checking for PDFs is to make a GET or HEAD request using the requests library to read the "Content-Type" property from the header.  If the property exists, you can check if it is is "application/pdf" and if so, the response must be a PDF. Unfortunately, the "Content-Type" property does not always exist in every header and it requires a lot of extra GET or HEAD requests that could lead to a webserver blocking all requests from the webscraper. Since thiis approaach does not always work, I abandoned the Header approach for PDF identification for the regular expression approach. After verifying the url is a PDF link, the checkIfPDFRegEx function calls the validateRequest function to generate a new GET request and returns the response. If a link is not a PDF, then the function returns None. 
 
-I added one more check in the main function to make sure a pdf link is valid by retrieving the response from the GET request and verifying the final URI in the header ends in a .pdf by running the checkIfPDFRegEx function on the response's url property. If the final URI is not a link ending in .pdf, then the link is likely mistyped on the website or links to a location that no longer exists. I ran into this issue while visiting the Society for East Asian Archaeology's site \cite{bulletin2016SEAA}.  \ref{fig:q3SEAA_badHTML}, shows three links that appaer to be applied at the end of the link to the article by Wada on this page. I examined these links using curl and received output sunukar to \ref{fig:q3SEAA_badHTML_curl}, which reveals these links ending in .pdf are ultimately linking back to the page that contained those links, which is common on some webservers when typos occur on links. HTML typos like this occur all of the time, so this additional step to validate the final URI from the response was included in this program.
+I added one more check in the main function to make sure a PDF link is valid by retrieving the response from the GET request and verifying the final URI in the header ends in a .pdf by running the checkIfPDFRegEx function on the response's url property. If the final URI is not a link ending in .pdf, then the link is likely mistyped on the website or links to a location that no longer exists. I ran into this issue while visiting the Society for East Asian Archaeology's site \cite{bulletin2016SEAA}.  \ref{fig:q3SEAA_badHTML}, shows three links that appaer to be applied at the end of the link to the article by Wada on this page. I examined these links using curl and received output sunukar to \ref{fig:q3SEAA_badHTML_curl}, which reveals these links ending in .pdf are ultimately linking back to the page that contained those links, which is common on some webservers when typos occur on links. HTML typos like this occur all of the time, so this additional step to validate the final URI from the response was included in this program.
 
 \begin{figure}[H]
     \centering
@@ -367,9 +387,9 @@ I added one more check in the main function to make sure a pdf link is valid by 
 \end{figure}
 
 
-The main function ends by calling a the printResult function on all of the responses returned from checkIfPDFRegEx. This function displays the original URI, the final URI (after any redirects) and the size of the pdf file. The URI is created using the original link url (after converting to an absolute path). The final URI is obtained using the GET request response's url property. The requests library by default will set the url to the final redirect unless the GET request is sent with an additional argument of "allow-redirects=False". If allow-redirects is set to false, then GET requests would have to be made on the resulting response.url until the response."status\_code" is no longer 300, 301, 302, 303, 307, or 308. This is quite inefficient and lots of GET requests to a server in a short period of time, increases the likleihood of the server blocking the webscraper. Instead, a normal GET request using the requests library can be used and the url property of the response is the final URI after any redirects. If a history of redirects is needed, the history property of the response can be looped through to get all URIs in between \cite{stackOverflowRedirects}. The file size of the PDF is found using the 'Content-length'  found in the response's header.  Since header properties can be absent on certain sites, I made use of a loop to check if it exists, prior to displying the file size to avoid an exception. Technically everything used in the printResults  can be used using a HEAD Request, however some webservers in an attempt to avoid scrapers do not allow HEAD requests, so a GET request was used. Once all links to pdfs have been displayed, the program ends. 
+The main function ends by calling a the printResult function on all of the responses returned from checkIfPDFRegEx. This function displays the original URI, the final URI (after any redirects) and the size of the PDF file. The URI is created using the original link url (after converting to an absolute path). The final URI is obtained using the GET request response's url property. The requests library by default will set the url to the final redirect unless the GET request is sent with an additional argument of "allow-redirects=False". If allow-redirects is set to false, then GET requests would have to be made on the resulting response.url until the response."status\_code" is no longer 300, 301, 302, 303, 307, or 308. This is quite inefficient and lots of GET requests to a server in a short period of time, increases the likleihood of the server blocking the webscraper. Instead, a normal GET request using the requests library can be used and the url property of the response is the final URI after any redirects. If a history of redirects is needed, the history property of the response can be looped through to get all URIs in between \cite{stackOverflowRedirects}. The file size of the PDF is found using the 'Content-length'  found in the response's header.  Since header properties can be absent on certain sites, I made use of a loop to check if it exists, prior to displying the file size to avoid an exception. Technically everything used in the printResults  can be used using a HEAD Request, however some webservers in an attempt to avoid scrapers do not allow HEAD requests, so a GET request was used. Once all links to PDFs have been displayed, the program ends. 
 
-This code is a fairly decent general purpose webscraping tool for pdfs on most web servers. However I found a few limitations. Some web servers will generate the "'Unable to receive response from  javascript:void(0)". For example I attempted to run the code on Google Scholar search results for Jomon (a prehistoric culture in Japan) \cite{googleScholarJomon} and the program generated this exception, but Google Scholar has not been consistent as I have been able to get successful runs on some pages, and other pages will errorneously find no PDFs. In cases like this, Google's server has blocked my webscraper from running the GET Requests because it is able to identify this is a scraper and not a regular browser. On clever webservers like Google, the requests library will not work and a headless browser approach using a library like Selenium would have to be used. Another limitation I came across and was suprised to see was that some web servers will load files without the file extension. For example, JSTAGE, a Japanese Journal database that provides free access to various articles in English and Japanese links to pdf files but the URIS provided do not end in .pdf as seen in \ref{fig:q3JSTAGE_pdfs}. The names of the pdf are obscured and only visible through the header in a "content-disposition" property as seen in \ref{fig:q3JSTAGE_headers}.These types of links are hard to identify and can't be found using this program. The only way to find these pdfs is to check the content-type in the header if it is available or to tailor your scraper to a single website. Websites with lots of pds tend to follow patterns for CSS formatting and javascript purposes, so it is possible all anchor tags linking to pdfs may be stored under a div with a unique class. While this scraper should find most pdf files on most websites, clearly there are still going to be cases where a specialized webscraper or headless browser solution will have to be used to get all pdf files. 
+This code is a decent general purpose webscraping tool for PDF files on most web servers. However I found a few limitations. Some web servers will generate the "'Unable to receive response from  javascript:void(0)". For example I attempted to run the code on Google Scholar search results for Jomon (a prehistoric culture in Japan) \cite{googleScholarJomon} and the program generated this exception, but Google Scholar has not been consistent as I have been able to get successful runs on some pages, and other pages will errorneously find no PDFs. In cases like this, Google's server has blocked my webscraper from running the GET Requests because it is able to identify this is a scraper and not a regular browser. On clever webservers like Google, the requests library will not work and a headless browser approach using a library like Selenium would have to be used. Another limitation I came across and was suprised to see was that some web servers will load files without the file extension. For example, JSTAGE, a Japanese Journal database that provides free access to various articles in English and Japanese links to PDF files but the URIS provided do not end in .pdf as seen in \ref{fig:q3JSTAGE_pdfs}. The names of the PDF are obscured and only visible through the header in a "Content-Disposition" property as seen in \ref{fig:q3JSTAGE_headers}.These types of links are hard to identify and can't be found using this program. The only way to find these PDFs is to check the content-type in the header if it is available or to desiign a webscraper for a specific website. Websites with lots of PDFs tend to follow patterns for CSS formatting and javascript purposes, so it is possible all anchor tags linking to PDFs may be stored under a div tag with a unique class. While this scraper should find most PDF files on most websites, there are still going to be cases where a specialized webscraper or headless browser solution will have to be used to get all PDFf files. 
 
 \begin{figure}[H]
     \centering
@@ -385,10 +405,11 @@ This code is a fairly decent general purpose webscraping tool for pdfs on most w
     % trim and clip are used to crop the image, trim=left bottom right top
     % width sets max width, height will be scaled appropriately
     \includegraphics[trim=0 60 10 20, clip, width=\textwidth] {Q3/q3_jstage_curl.PNG}
-    \caption{Headers for a pdf on JSTAGE with filename stored in content-disposition property }
+    \caption{Headers for a pdf on JSTAGE with filename stored in Content-Disposition property }
     \label{fig:q3JSTAGE_headers}
 \end{figure}
 
+\pagebreak
 %referred to https://tex.stackexchange.com/questions/334899/space-between-words-in-bibliography for pacing
 % referred to https://www.overleaf.com/learn/latex/bibliography_management_with_bibtex for bibtext
 \RaggedRight

@@ -1,1 +1,1 @@
-python3 findPDFs.py  https://seaa-web.org/publications/bseaa/bullehttps://seaa-web.org/publications/bseaa/bulletin-society-east-asian-archaeology-volume-3-2016tin-society-east-asian-archaeology
+python3 findPDFs.py  https://seaa-web.org/publications/bseaa/bulletin-society-east-asian-archaeology-volume-3-2016

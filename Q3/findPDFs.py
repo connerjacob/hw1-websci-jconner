@@ -60,11 +60,12 @@ def checkIfPDFRegEx(url):
         return None
         
 def printResults(response, link):
+    print() # print a new line for aesthetics
     print("URI:", link) #link from anchor tag
     print("Final URI:", response.url) #obtained from response
     #check for content-length
     if 'Content-length' in response.headers:
-        print(response.headers['Content-length'], ' bytes')    
+        print("Content Length: {:,} bytes".format(int(response.headers['Content-length'])))    
     else:
         print('File Size Unknown')
     print() # print a new line for aesthetics
