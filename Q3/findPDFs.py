@@ -56,9 +56,9 @@ def checkIfPDFRegEx(url):
         m = re.search('.*(\.pdf)$', url) 
         # anything matches, then must be a pdf
         if m != None:
-            return validateRequest(url)
+            return url
         return None
-
+        
 def printResults(response, link):
     print("URI:", link) #link from anchor tag
     print("Final URI:", response.url) #obtained from response
@@ -81,10 +81,15 @@ def main():
         #check if relative path and convert to absolute path
         url = absolutePath(webpage, link['href'])
         #check if pdf, and get http request
-        response = checkIfPDFRegEx(url)
-        if (response):
-            #print results
-            printResults(response, url)  
+        url = checkIfPDFRegEx(url)
+        if(url):
+            response = validateRequest(url)
+            if (response):
+                #To account for bad links
+                #Check once more if the final uri is a pdf
+                if(checkIfPDFRegEx(response.url)):
+                    response = validateRequest(response.url)
+                    printResults(response, url)  
 
 if __name__ == '__main__':
     main()
