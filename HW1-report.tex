@@ -12,6 +12,7 @@
 \usepackage{xcolor}                 % for styling code
 \usepackage{multirow}
 \usepackage{float}
+\usepackage{ragged2e}
 
 %New colors defined below
 \definecolor{backcolour}{RGB}{246, 246, 246}   % 0xF6, 0xF6, 0xF6
@@ -143,7 +144,7 @@ Since this graph is a miniature representation of the web, the most interesting 
 \label{tbl:scclinks}
 \begin{tabular}{|l|l|l|l|l|}
 \hline
-\textbf{col} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{D} \\ \hline \hline
+\textbf{ } & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{D} \\ \hline
 A & X & A,B & A,B,C & A,B,C,D \\ \hline
 B & B,A & X & B,C & B,C,D \\ \hline
 C & C,D,A & C,D,A,B & X & C,D \\ \hline
@@ -164,7 +165,7 @@ c) Finally, load the URI directly from your browser and take a screenshot.
 
 Explain the results you get for each of these steps.
 \subsection*{Answer}
-a)
+\subsubsection*{a)}
 \begin{lstlisting}[numbers=none, caption=Command, label=lst:q2ACommand]
 curl -i -L -A "CS432/532" http://www.cs.odu.edu/~mweigle/courses/cs532/ua_echo.php
 \end{lstlisting}
@@ -207,7 +208,7 @@ The curl command is used to make HTTP GET Requests. the -i  or --include flag is
 and response for all redirects. The -A or --user-agent flag specifies the User-Agent property in the header that is sends to the string next to it. IN this case the User-Agent sent is "CS432/5432".
 Then the last part of the curl command is the URI(s) for the webserver(s) that we are making a HTTP GET request to \cite{curlManPage}.
 
-b)
+\subsubsection*{b)}
 \begin{lstlisting}[numbers=none, caption="curl command to get headers only for all redirects and sets the User-Agent header property", label=lst:q2BCommand]
 curl -o response.html -L -A "CS432/532" http://www.cs.odu.edu/\~mweigle/courses/cs532/ua\_echo.php
 \end{lstlisting}
@@ -226,7 +227,7 @@ This command is similar to the previous command in part a. However since we do n
 response from the server into the file response.html. \ref{lst:responseHtml} shows this output from the GET request. The response.html file is a fairly simple html file with a body tag enclosing one set of bold tags surrounding the words User-Agent, and  the value of our User-Agent property (CS432/532) in the GET request header. The browser representation of the response is displayed in \ref{fig:q2BResponse}.
 
 
-c)
+\subsubsection*{c)}
 \begin{figure}[h]
     \centering
     % trim and clip are used to crop the image, trim=left bottom right top
@@ -271,58 +272,61 @@ Content Length: 622,981 bytes
 
 \subsection*{Answer}
 Listing \ref{lst:findPDFs} is the imported code I used to scrape pdf files from webpages.
-
-\lstinputlisting[language=Python, caption=FindPDFs.py, label=lst:findPDFs]{Q3/findPDFs.py}
+\subsubsection*{Program Code}
+\lstinputlisting[language=Python, caption=findPDFs.py, label=lst:findPDFs]{Q3/findPDFs.py}
 
 Below I have provided screenshots of various sample output from the findPDFs.py scraper. 
-\ref{fig:q3ResponseWeigle} is the output I received after running the findPDFs.py scraper on https://www.cs.odu.edu/ mweigle/courses/cs532/pdfs.html 
+\subsection*{Test 0: Dr. Weigle's PDFs} 
+
+\ref{fig:q3ResponseWeigle} is the output I received after running the findPDFs.py scraper on https://www.cs.odu.edu/\~ mweigle/courses/cs532/pdfs.html 
 \begin{figure}[H]
     \centering
     % trim and clip are used to crop the image, trim=left bottom right top
     % width sets max width, height will be scaled appropriately
-    \includegraphics[trim=0 20 10 50, clip, width=\textwidth] {Q3/q3_weiglePdfs.png}
-    \caption{findPDFs.py results for https://www.cs.odu.edu/ mwei-
+    \includegraphics[trim=0 50 400 20, clip, width=\textwidth] {Q3/q3_weiglePdfs.png}
+    \caption{findPDFs.py results for https://www.cs.odu.edu/\~ mwei-
 gle/courses/cs532/pdfs.html}
     \label{fig:q3ResponseWeigle}
 \end{figure}
 
-
+\subsection*{Test 1: Ubuntu Documentation} 
 \ref{fig:q3ResponseUbuntu} is the output I received after running the findPDFs.py scraper on the Ubuntu manual page (https://help.ubuntu.com/)
-\begin{figure}[h]
-    \centering
-    % trim and clip are used to crop the image, trim=left bottom right top
-    % width sets max width, height will be scaled appropriately
-    \includegraphics[trim=0 20 10 50, clip, width=\textwidth] {Q3/q3_ubuntuHelp.png}
-    \caption{findPDFs.py results for https://help.ubuntu.com/}
-    \label{fig:q3ResponseUbuntu}
-\end{figure}
-
-\ref{fig:q3ResponsecranR_1} and \ref{fig:q3ResponsecranR_2} are screenshots of the output I received after running the findPDFs.py scraper on the CRAN-R R programming manuals page (https://cran.r-project.org/manuals.html)
-\begin{figure}[h]
-    \centering
-    % trim and clip are used to crop the image, trim=left bottom right top
-    % width sets max width, height will be scaled appropriately
-    \includegraphics[trim=0 20 10 50, clip, width=\textwidth] {Q3/q3_cranRManuals.png}
-    \caption{findPDFs.py results for https://cran.r-project.org/manuals.html}
-    \label{fig:q3ResponsecranR_1}
-\end{figure}
-
-
-\begin{figure}[h]
-    \centering
-    % trim and clip are used to crop the image, trim=left bottom right top
-    % width sets max width, height will be scaled appropriately
-    \includegraphics[trim=0 20 10 50, clip, width=\textwidth] {Q3/q3_cranRManuals2.png}
-    \caption{findPDFs.py results for https://cran.r-project.org/manuals.html}
-    \label{fig:q3ResponsecranR_2}
-\end{figure}
-
-\ref{fig:q3ResponseSEAA_1} and \ref{fig:q3ResponseSEAA_2} are screenshots of the output I received after running the findPDFs.py scraper on the Society of East Asian Archaeology's 2018 bulletin page (https://seaa-web.org/publications/bseaa/bulletin-society-east-asian-archaeology)
 \begin{figure}[H]
     \centering
     % trim and clip are used to crop the image, trim=left bottom right top
     % width sets max width, height will be scaled appropriately
-    \includegraphics[trim=0 60 10 20, clip, width=\textwidth] {Q3/q3-seaaBulletin2016.png}
+    \includegraphics[trim=0 20 400 20, clip, width=\textwidth] {Q3/q3_ubuntuHelp.png}
+    \caption{findPDFs.py results for https://help.ubuntu.com/}
+    \label{fig:q3ResponseUbuntu}
+\end{figure}
+
+\subsection*{Test 2: CRAN-R R Documentation} 
+\ref{fig:q3ResponsecranR_1} and \ref{fig:q3ResponsecranR_2} are screenshots of the output I received after running the findPDFs.py scraper on the CRAN-R R programming manuals page (https://cran.r-project.org/manuals.html)
+\begin{figure}[H]
+    \centering
+    % trim and clip are used to crop the image, trim=left bottom right top
+    % width sets max width, height will be scaled appropriately
+    \includegraphics[trim=0 0 400 20, clip, width=\textwidth] {Q3/q3_cranRManuals.png}
+    \caption{findPDFs.py results for https://cran.r-project.org/manuals.html}
+    \label{fig:q3ResponsecranR_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    % trim and clip are used to crop the image, trim=left bottom right top
+    % width sets max width, height will be scaled appropriately
+    \includegraphics[trim=0 30 400 10, clip, width=\textwidth] {Q3/q3_cranRManuals2.png}
+    \caption{findPDFs.py results for https://cran.r-project.org/manuals.html}
+    \label{fig:q3ResponsecranR_2}
+\end{figure}
+
+\subsection*{Test 3: Society for East Asian Archaeology} 
+\ref{fig:q3ResponseSEAA_1} is a screenshot of the output I received after running the findPDFs.py scraper on the Society of East Asian Archaeology's 2016 bulletin page (https://seaa-web.org/publications/bseaa/bulletin-society-east-asian-archaeology)
+\begin{figure}[H]
+    \centering
+    % trim and clip are used to crop the image, trim=left bottom right top
+    % width sets max width, height will be scaled appropriately
+    \includegraphics[trim=0 20 400 20, clip, width=\textwidth] {Q3/q3-seaaBulletin2016.png}
     \caption{findPDFs.py results for https://seaa-web.org/publications/bseaa/bulletin-society-east-asian-archaeology}
     \label{fig:q3ResponseSEAA_1}
 \end{figure}
@@ -385,8 +389,11 @@ This code is a fairly decent general purpose webscraping tool for pdfs on most w
     \label{fig:q3JSTAGE_headers}
 \end{figure}
 
-
-\bibliographystyle{unsrt}
+%referred to https://tex.stackexchange.com/questions/334899/space-between-words-in-bibliography for pacing
+% referred to https://www.overleaf.com/learn/latex/bibliography_management_with_bibtex for bibtext
+\RaggedRight
+\bibliographystyle{elsarticle-num} 
+%\bibliographystyle{unsrt}
 \bibliography{references}
 
 
